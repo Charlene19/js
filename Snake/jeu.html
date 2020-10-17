@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+
+        <script type="text/javascript">
+// Ma fonction js est dans mon header
+
+//Mes variable 
+
+
+            var posX = 0;
+            var posY = 0;
+            var oldPosX = 0;
+            var oldPosY = 0;
+            var canvas;
+            var back = new Image();
+            var oldBack = new Image();
+            var virus = new Image();
+            var ctx;
+
+
+
+            function goAheadVirus() {
+
+                canvas = document.getElementById("monJeu");
+
+
+                if (canvas.getContext) {
+                    ctx = canvas.getContext("2d");
+                    ctx.fillStyle = "yellow";
+                    ctx.rect(0, 0, 300, 300);
+                    ctx.fill();
+
+                    back = ctx.getImageData(0, 0, 30, 30);
+
+
+                    dispend();
+                    viruse();
+
+                }
+
+
+                gameLoop = setInterval(doGameLoop, 16);
+                window.addEventListener('keydown', whatKey, true);
+
+            }
+
+            function dispend() {
+
+               
+                for (i = 0; i <= 50; i++) {
+                   
+                    var x = Math.floor(Math.random() * 299);
+                    var y = Math.floor(Math.random() * 299);
+
+                    
+                    ctx.fillStyle = "green";
+
+                  
+                    if (x < 30 || y < 30)
+                        ctx.fillStyle = "black";
+
+                  
+                    ctx.beginPath();
+                    ctx.arc(x, y, 3, 0, Math.PI * 2, true);
+                    ctx.closePath();
+                    ctx.fill();
+
+            
+                    oldBack = ctx.getImageData(0, 0, 30, 30);
+                }
+            }
+
+            function viruse() {
+
+
+  /*              ctx.beginPath();
+                ctx.moveTo(28.4, 16.9);
+                ctx.bezierCurveTo(28.4, 19.7, 22.9, 22.0, 16.0, 22.0);
+                ctx.bezierCurveTo(9.1, 22.0, 3.6, 19.7, 3.6, 16.9);
+                ctx.bezierCurveTo(3.6, 14.1, 9.1, 11.8, 16.0, 11.8);
+                ctx.bezierCurveTo(22.9, 11.8, 28.4, 14.1, 28.4, 16.9);
+                ctx.closePath();
+                ctx.fillStyle = "rgb(222, 103, 0)";
+                ctx.fill();
+*/
+  ctx.beginPath();
+                ctx.moveTo(75, 25);
+                ctx.quadraticCurveTo(65, 25, 25, 62.5);
+                ctx.quadraticCurveTo(65, 100, 50, 100);
+                ctx.quadraticCurveTo(65, 100, 30, 125);
+                ctx.quadraticCurveTo(65, 100, 65, 100);
+                ctx.quadraticCurveTo(65, 100, 125, 62.5);
+                ctx.quadraticCurveTo(65, 25, 75, 25);
+
+                ctx.closePath();
+                ctx.fillStyle = "green";
+                ctx.fill();
+
+                virus = ctx.getImageData(0, 0, 30, 30);
+                ctx.putImageData(oldBack, 0, 0);
+            }
+
+            function doGameLoop() {
+
+
+                ctx.putImageData(oldBack, oldPosX, oldPosY);
+                ctx.putImageData(virus, posX, posY);
+
+            }
+
+            function whatKey(evt) {
+
+
+                var bord = 0;
+
+
+                oldPosX = posX;
+                oldPosY = posY;
+                oldBack = back;
+
+                switch (evt.keyCode) {
+
+
+                    case 37:
+                        posX = posX - 30;
+                        if (posX < 0) {
+
+                            posX = 0;
+                            bord = 1;
+                        }
+                        break;
+
+
+                    case 39:
+                        posX = posX + 30;
+                        if (posX > 270) {
+
+                            posX = 270;
+                            bord = 1;
+                        }
+                        break;
+
+
+                    case 40:
+                        posY = posY + 30;
+                        if (posY > 270) {
+
+                            posY = 270;
+                            bord = 1;
+                        }
+                        break;
+
+
+                    case 38:
+                        posY = posY - 30;
+                        if (posY < 0) {
+
+                            posY = 0;
+                            bord = 1;
+                        }
+                        break;
+
+                
+
+                if (bord) {
+                    posX = oldPosX;
+                    posY = oldPosY;
+                    virus = back;
+                } else {
+
+                    back = ctx.getImageData(posX, posY, 30, 30);
+                }
+            }
+        }
+
+        </script>
+    </head>
+
+    <body onload="goAheadVirus()">
+        <h1>
+            Mon premier jeu
+        </h1>
+        <canvas id="monJeu" width="300" height="300">
+        </canvas>
+    </body>
+</html>
