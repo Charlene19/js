@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html>
+<body>
+
+    
+    <h1 style="text-align: center">Le formulaire</h1>
+    
+  <br><br>
+    <br><br>
+    <div style="background-color: antiquewhite; text-align: center">
+ <br><br>
+<form id="frm1" action="">
+
+
+ 
+  First name: <input type="text" name="fname" id="nam" required><br><br>
+  Last name: <input type="text" name="lname" id="namL" required><br><br>
+  Email:   <input type="text" name="email" id="mail" required><br><br>
+  Telephone: <input type="text" name="tel" id="tel" required><br><br>
+  <div id="error"></div>
+  Message: <input type="text" name="msg" id="msg" required><br><br>
+  
+
+  Terms and conditions 
+  <br><br>
+  <div>
+  <input type="radio" id="acc" name="drone" value="accept"
+         checked>
+  <label for="Accept">Accept</label>
+</div>
+
+<div>
+  <input type="radio" id="refus" name="drone" value="dewey">
+  <label for="dewey">Refuser</label>
+</div>
+
+<br><br>
+  <input type="submit" onclick="myFunction()" >
+</form>
+ <br><br>
+
+
+<script>
+    
+    var tel = document.getElementById('tel'); 
+
+
+tel.addEventListener("keyup", function(event){
+    
+      console.log(tel.value);
+      
+      if(!isNaN(tel.value)){
+          document.getElementById("error").textContent= ""; 
+      }else{
+          document.getElementById("error").innerHTML= "<p style='background-color : green'> Entrez des chiffres </p>";
+      }
+  });
+  
+function myFunction() {
+  document.getElementById("frm1").submit();
+  var name = document.getElementById("nam").value
+  var Fname = document.getElementById("namL").value
+  var tel = document.getElementById("tel").value
+  var email = document.getElementById("mail").value
+  var msg = document.getElementById("msg").value
+  
+  alert("Nom : " + name + "\n" + "Prenom : " + Fname + "\n" +  "Email : " + email + "\n" + "Mesage : " + msg); 
+ 
+        
+       if (name.value == ""){
+      
+      name.style.backgroundColor= 'blue'; 
+      console.log(true); 
+      return true; 
+  }
+  
+  
+
+  
+
+}
+</script>
+
+</div>
+</body>
+</html>
+

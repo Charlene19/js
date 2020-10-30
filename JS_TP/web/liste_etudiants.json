@@ -1,0 +1,35 @@
+{
+	"etudiants":[
+		{
+		  "nom": "Camara",
+		  "prenom": "Moussa",
+		  "moyenne": 15
+		},
+		{
+		  "nom": "Arséne",
+		  "prenom": "Lupin",
+		  "moyenne": 10
+		},
+		{
+		  "nom": "Dupont",
+		  "prenom": "Guillaume",
+		  "moyenne": 9
+		},
+		{
+		  "nom": "Machin",
+		  "prenom": "Bidule",
+		  "moyenne": 5
+		},
+		{
+		  "nom": "Dujardin",
+		  "prenom": "Jean",
+		  "moyenne": 11
+		}
+	]
+        
+       
+   
+       
+
+}
+

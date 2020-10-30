@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Tuto Meteo</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <meta charset="UTF-8">
+
+  </head>
+  <h1 style="text-align: center"> La météo de votre ville </h1>
+  <div style="position: absolute; margin-right: auto;  top: 50%; left: 50%; width: 194px; height: 260px; background-image: url('paysage.jpg'); ">
+    <input id="ville" style="margin-left: auto; position: absolute; left:95%; right:5%; top: 40%;" type="text"/>
+    <input style="margin-left: auto; position: absolute; left:70%; right:30%; top: 60%;" type="button" value="METEO"  onclick="buttonClickGET()"  />
+    <p style="margin-left: auto; position: absolute; left:42%; right:58%; top: 70%;" id="zone_meteo"> Meteo : </p>
+  </div>
+
+      <script>
+
+function buttonClickGET() {
+    var ville =  $("#ville").val();
+    console.log(ville);
+
+   // var url = "https://api.openweathermap.org/data/2.5/weather?q=Paris,fr&appid=c21a75b667d6f7abb81f118dcf8d4611&units=metric";
+  var url = url(ville);
+    $.get(url, callBackGetSuccess).done(function() {
+
+      })
+      .fail(function() {
+        alert( "Ville non reconnue" );
+      })
+
+
+    function url (villeIN){
+      return "https://api.openweathermap.org/data/2.5/weather?q="+ villeIN +",fr&appid=c21a75b667d6f7abb81f118dcf8d4611&units=metric"
+    }
+}
+
+
+var callBackGetSuccess = function(data) {
+    var element = document.getElementById("zone_meteo");
+  element.innerHTML = "<h3>" + data.main.temp + "</h3>";
+};
+    </script>
+  </body>
+</html>

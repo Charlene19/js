@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div id="tellStatus">Résultats : </div>
+       
+<p id="demo"></p>
+
+        <script>
+
+
+var etudiants; 
+
+etudiants = {
+"etudiants" : [
+		{
+		  "nom": "Camara",
+		  "prenom": "Moussa",
+		  "moyenne": 15
+		},
+		{
+		  "nom": "Arséne",
+		  "prenom": "Lupin",
+		  "moyenne": 10
+		},
+		{
+		  "nom": "Dupont",
+		  "prenom": "Guillaume",
+		  "moyenne": 9
+		},
+		{
+		  "nom": "Machin",
+		  "prenom": "Bidule",
+		  "moyenne": 5
+		},
+		{
+		  "nom": "Dujardin",
+		  "prenom": "Jean",
+		  "moyenne": 11
+		}
+	
+]
+       
+ 
+};
+var i = ""; 
+var x = document.getElementById('tellStatus').innerHTML; 
+
+/*for (i in etudiants) {
+    
+     console.log(etudiants.etudiants[1].moyenne); 
+     
+  if (etudiants.etudiants[i] > 9){
+     
+    // console.log(etudiants.i.moyenne);
+    x +=  document.getElementById("tellStatus").innerHTML =  "Niveau superieur" + "<br>";
+  }else{
+     x+=   document.getElementById("tellStatus").innerHTML =  "Redoublement";
+  }
+}*/
+
+for (var i = 0; i < etudiants.etudiants.length; i++ ) {
+    
+console.log(etudiants.etudiants[i].moyenne);   
+
+  if (etudiants.etudiants[i].moyenne > 9){ 
+   
+    document.getElementById('tellStatus').innerHTML += "<p>" + etudiants.etudiants[i].nom + " est admis au : " + "Niveau superieur <p>" + "<br>";
+    
+  }else{
+     document.getElementById('tellStatus').innerHTML +=    "<p>" + etudiants.etudiants[i].nom + " doit : Redoubler <p> <br>";
+  }
+}
+
+</script>
+
+    </body>
+</html>

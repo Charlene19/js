@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Tuto Meteo</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+</head>
+<body>
+<input type="button" value="APPEL DE CITATION INSPIRANTE"  onclick="buttonClickGET()"  />
+<p id="zone_citation">La citation va apparaître ici</p>
+
+<script>
+
+    function buttonClickGET() {
+        var url = "https://favqs.com/api/qotd";
+
+        $.get(url, callBackGetSuccess).done(function() {
+            //alert( "second success" );
+        })
+            .fail(function() {
+                alert( "error" );
+            })
+            .always(function() {
+                //alert( "finished" );
+            });
+    }
+
+
+    var callBackGetSuccess = function(data) {
+        var element = document.getElementById("zone_citation");
+        element.innerHTML = "La citation est " + data.quote.body;
+    };
+</script>
+</body>
+</html>
